@@ -23,3 +23,4 @@ askForData(contratante,contratada)
 print('Nome da empresa contratante: {}'.format(contratante.nome))
 
 
+print('oi')
