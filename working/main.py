@@ -9,7 +9,6 @@
 from classes import *
 from functions import *
 
-print(oi)
 #
 #
 #
