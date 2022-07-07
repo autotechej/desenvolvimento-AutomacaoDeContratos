@@ -31,6 +31,7 @@ MenuPrincipalLayout = [
     [sg.Button('Sair')]
 ]
 
+#Layout do 
 MenuContratosLayout = [
     [sg.Text('Você possui dois tipos de contrato: Venda e Prestação de Serviços')],
     [sg.Text('Indique qual tipo de contrato você quer usar:'), sg.InputText()],
@@ -63,11 +64,13 @@ def Formulario():
     print(event, values)
 
 def MenuPreencherContratos():
-    global ContratosWindow, event2, values2
+    global ContratosWindow, event2, values2, TipoContrato
     ContratosWindow = sg.Window("Autotech AutoContract", MenuContratosLayout)
     event2, values2 = ContratosWindow.read()
+    TipoContrato = values2[0]
     if event2 == 'Continuar':
-        Formulario()
+        if TipoContrato == 'Venda' or TipoContrato == 'Prestação de Serviços':
+            Formulario()
     elif event2 == 'Sair':
         ContratosWindow.close()
 
@@ -89,7 +92,6 @@ def MenuPreferencias():
     global PreferenciasWindow, event3, values3
     PreferenciasWindow = sg.Window("Autotech AutoContract", PreferenciasLayout)
     event3, values3 = PreferenciasWindow.read()
-
 
 
 
