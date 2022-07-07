@@ -29,6 +29,6 @@ layout = [
     [sg.Text('Insira a descrição mais detalhada do sistema:', font = font), sg.InputText()],
     [sg.Button('Confirmar')]
     ]
-window = sg.Window('Número de controle', layout)
+window = sg.Window('Autotech AutoContract', layout)
 event, values = window.read()
 print(event, values)
