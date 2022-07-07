@@ -14,10 +14,11 @@ sg.LOOK_AND_FEEL_TABLE['MyCreatedTheme'] = {'BACKGROUND': '#02A69D',
                                         'BORDER': 1, 'SLIDER_DEPTH': 0,
                                         'PROGRESS_DEPTH': 0, }
 font = ("Times New Roman", 12)
-FontTitle = ("TImes New Roman", 16, )
+FontTitle = ("TImes New Roman", 16)
+font2 = ("Times New Roman", 4)
 sg.theme('MyCreatedTheme') 
 layout = [
-    [sg.Text('AUTOTECH', font = FontTitle)],
+    [sg.Text('AUTOTECH', font = FontTitle), sg.Text('TM', font = font2)],
     [sg.Text('Bem-vindo ao sistema automatizado da Autotech para geração de contratos. Insira os dados conforme solicitados.',font = font)],
     [sg.Text('Insira o Nome do Cliente:', font = font), sg.InputText(), sg.Text('                            Insira o CNPJ do Cliente:', font = font), sg.InputText()],
     [sg.Text('Insira Endereço do Cliente:', font = font), sg.InputText(), sg.Text('                          Insira o CEP do Cliente:', font = font), sg.InputText()],
