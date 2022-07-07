@@ -16,7 +16,13 @@ sg.LOOK_AND_FEEL_TABLE['MyCreatedTheme'] = {'BACKGROUND': 'Black',
 font = ("Times New Roman", 12)
 FontTitle = ("TImes New Roman", 16)
 font2 = ("Times New Roman", 6)
+
+#Essa função aplica o tema à janela
+
 sg.theme('MyCreatedTheme') 
+
+#Aqui se define o layout da janela de interface
+
 layout = [
     [sg.Text('AUTOTECH', font = FontTitle), sg.Text('TM', font = font2)],
     [sg.Text('Bem-vindo ao sistema automatizado da Autotech para geração de contratos. Insira os dados conforme solicitados.',font = font)],
@@ -29,6 +35,11 @@ layout = [
     [sg.Text('Insira a descrição mais detalhada do sistema:', font = font), sg.InputText()],
     [sg.Button('Confirmar')]
     ]
+#A janela de nome Window é criada com a função abaixo
+
 window = sg.Window('Autotech AutoContract', layout)
+
+#Essa função lê os dados inseridos na janela. Event é a variável que armazena os dados dos botões e values os dados das caixas de texto
+
 event, values = window.read()
 print(event, values)
