@@ -4,18 +4,18 @@ import PySimpleGUI as sg
 
 #Aqui são definidos os parâmetros do tema da interface, nesse caso foram utilizadas as cores da EJ
 
-sg.LOOK_AND_FEEL_TABLE['MyCreatedTheme'] = {'BACKGROUND': '#02A69D', 
-                                        'TEXT': '#4E2559', 
-                                        'INPUT': '#34BF98', 
+sg.LOOK_AND_FEEL_TABLE['MyCreatedTheme'] = {'BACKGROUND': 'Black', 
+                                        'TEXT': '#02A69D', 
+                                        'INPUT': '#02A69D', 
                                         'TEXT_INPUT': '#4E2559', 
                                         'SCROLL': '#EB7F00', 
-                                        'BUTTON': ('#EB7F00', '#4E2559'), 
+                                        'BUTTON': ('Black', '#02A69D'), 
                                         'PROGRESS': ('# D1826B', '# CC8019'), 
                                         'BORDER': 1, 'SLIDER_DEPTH': 0,
                                         'PROGRESS_DEPTH': 0, }
 font = ("Times New Roman", 12)
 FontTitle = ("TImes New Roman", 16)
-font2 = ("Times New Roman", 4)
+font2 = ("Times New Roman", 6)
 sg.theme('MyCreatedTheme') 
 layout = [
     [sg.Text('AUTOTECH', font = FontTitle), sg.Text('TM', font = font2)],
