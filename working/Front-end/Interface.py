@@ -15,7 +15,8 @@ sg.LOOK_AND_FEEL_TABLE['MyCreatedTheme'] = {'BACKGROUND': 'Black',
                                         'BORDER': 1, 'SLIDER_DEPTH': 0,
                                         'PROGRESS_DEPTH': 0, }
 font = ("Times New Roman", 12)
-FontTitle = ("TImes New Roman", 16)
+FontTitle = ("Times New Roman", 60)
+FontSubtitle = ("Times New Roman", 20)
 font2 = ("Times New Roman", 6)
 font3 = ("Times New Roman", 24)
 
@@ -27,14 +28,16 @@ sg.theme('MyCreatedTheme')
 
 #Layout do menu principal
 MenuPrincipalLayout = [
-    [sg.Button('Preencher Novo Contrato')],
-    [sg.Button('Preferências')],
-    [sg.Button('Sair')]
+    [sg.Text('Autotech', font = FontTitle)],
+    [sg.Text('Menu Principal', font = FontSubtitle)],
+    [sg.Button('Preencher Novo Contrato', font=font)],
+    [sg.Button('Preferências',  font=font)],
+    [sg.Button('Sair', font=font)]
 ]
 
 #Layout do Menu de Contratos
 MenuContratosLayout = [
-    [sg.Text('Você possui dois tipos de contrato: Venda e Prestação de Serviços')],
+    [sg.Text('Você possui dois tipos de contrato: Venda e Prestação de Serviços (como estamos na versão de teste, ambos os tipos resutarão no mesmo)')],
     [sg.Text('Indique qual tipo de contrato você quer usar:'), sg.InputText()],
     [sg.Button('Continuar'), sg.Button('Sair')]
 ]
@@ -65,6 +68,72 @@ FormularioLayout2 =[
     [sg.Text('Indique o Endereço do Presidente:'), sg.InputText(), sg.Text('Indique o EMAIL da EJ: '), sg.InputText()],
     [sg.Button('Continuar'), sg.Button('Sair')]
 ]
+
+FormularioLayout3 =[
+    [sg.Text('Dados Financeiros', font = font3)],
+    [sg.Text('Indique o Valor Final do Serviço: '), sg.InputText()],
+    [sg.Text('Faça uma breve descrição de como será a forma de pagamento:'), sg.InputText()],
+    [sg.Text('Indique o Titular da Conta que o pagamento será efetuado:'), sg.InputText()],
+    [sg.Text('Indique o CNPJ da Conta do Pagamento: '), sg.InputText()],
+    [sg.Text('Inidique o Banco em que será efetuado o pagamento:'), sg.InputText()],
+    [sg.Text('Indique a Agência do Banco(Com dígito):'), sg.InputText()], 
+    [sg.Text("Indique a Conta(Com dígito): "), sg.InputText()],
+    [sg.Button('Continuar'), sg.Button('Sair')]
+]
+
+
+FormularioLayout4 = [
+    [sg.Text('Dados Finais', font=font3)],
+    [sg.Text('Indique o Número de Controle: '), sg.InputText()], 
+    [sg.Text('Data no formato xx/xx/xxxx:'), sg.InputText('xx/xx/xxxx')],
+    [sg.Text('Indique o Nome do Representante da Empresa Cliente:'), sg.InputText()], 
+    [sg.Text('Indique o CPF do Representante:'), sg.InputText()],
+    [sg.Text('Indique o Nome da Testemunha 1'), sg.InputText()], 
+    [sg.Text('Indique o CPF da Testemunha 1:'), sg.InputText()],
+    [sg.Text('Indique o Nome da Testemunha 2'), sg.InputText()], 
+    [sg.Text('Indique o CPF da Testemunha 2:'), sg.InputText()],
+    [sg.Button('Finalizar'), sg.Button('Sair')]
+]
+
+
+
+def Formulario4():
+    global FormularioWindow4, event7, values7, NumeroControle, Data, NomeRepresentante, CPFRepresentante, Testemunha1, CPFTestemunha1, Testemunha2, CPFTestemunha2
+    FormularioWindow4 = sg.Window('Autotech AutoContract', FormularioLayout4)
+    event7, values7 = FormularioWindow4.read()
+    NumeroControle = values7[0]
+    Data = values7[1]
+    NomeRepresentante = values7[2]
+    CPFRepresentante = values7[3]
+    Testemunha1 = values7[4]
+    CPFTestemunha1 = values7[5]
+    Testemunha2 = values7[6]
+    CPFTestemunha2 = values7[7]
+    if event7 == 'Finalizar':
+        FormularioWindow4.close()
+    elif event7 == 'Sair':
+        FormularioWindow4.close()
+
+
+
+
+def Formulario3():
+    global FormularioWindow3, event6, values6, ValorFinal, DescricaoPagamento, Titular, CNPJPagamento, Banco, Agencia, Conta
+    FormularioWindow3 = sg.Window("Autotech AutoContract", FormularioLayout3)
+    event6, values6 = FormularioWindow3.read()
+    ValorFinal = values6[0]
+    DescricaoPagamento = values6[1]
+    Titular = values6[2]
+    CNPJPagamento = values6[3]
+    Banco = values6[4]
+    Agencia = values6[5]
+    Conta = values6[6]
+    if event6 == 'Continuar':
+        FormularioWindow3.close()
+        Formulario4()
+    elif event6 == 'Sair':
+        FormularioWindow3.close()
+
 
 
 def Formulario2():
@@ -138,7 +207,7 @@ def MenuPreferencias():
 #A função que executa a janela do Menu Principal, dentro dela são executadas as outras
 def MenuPrincipal():
     global MenuWindow, event1, values1
-    MenuWindow = sg.Window("Autotech AutoContract", MenuPrincipalLayout)
+    MenuWindow = sg.Window("Autotech AutoContract", MenuPrincipalLayout, size=(500,300), element_justification='c')
     event1, values1 = MenuWindow.read()
     #Caso clique Preencher Novo Contrato ele abre o menu de contratos
     if event1 == 'Preencher Novo Contrato':
