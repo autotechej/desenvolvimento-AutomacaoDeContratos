@@ -1,7 +1,8 @@
 #Esta é a biblioteca usada para fazer a interface
 
+from tkinter import CENTER, LEFT, RIGHT
+from turtle import left
 import PySimpleGUI as sg
-from sqlalchemy import case
 
 #Aqui são definidos os parâmetros do tema da interface, nesse caso foram utilizadas as cores da EJ
 
@@ -17,6 +18,7 @@ sg.LOOK_AND_FEEL_TABLE['MyCreatedTheme'] = {'BACKGROUND': 'Black',
 font = ("Times New Roman", 12)
 FontTitle = ("TImes New Roman", 16)
 font2 = ("Times New Roman", 6)
+font3 = ("Times New Roman", 24)
 
 #Essa função aplica o tema à janela
 
@@ -46,30 +48,26 @@ PreferenciasLayout = [
 ]
 
 #Layout do Formulário
-layout = [
-    [sg.Text('AUTOTECH', font = FontTitle), sg.Text('TM', font = font2)],
-    [sg.Text('Bem-vindo ao sistema automatizado da Autotech para geração de contratos. Insira os dados conforme solicitados.',font = font)],
-    [sg.Text('Insira o Nome do Cliente:', font = font), sg.InputText(), sg.Text('                            Insira o CNPJ do Cliente:', font = font), sg.InputText()],
-    [sg.Text('Insira Endereço do Cliente:', font = font), sg.InputText(), sg.Text('                          Insira o CEP do Cliente:', font = font), sg.InputText()],
-    [sg.Text('Insira a Cidade, Estado do Cliente:', font = font), sg.InputText(), sg.Text('              Insira o Nome do Presidente da Empresa:', font = font), sg.InputText()],
-    [sg.Text('Insira o CPF do Presidente:', font = font), sg.InputText(), sg.Text('                         Insira o RG do Presidente:', font = font), sg.InputText()],
-    [sg.Text('Insira o Endereço do Presidente:', font = font), sg.InputText(), sg.Text('                  Insira a descrição do sistema:', font = font), sg.InputText()],
-    [sg.Text('Insira o objetivo do sistema:', font = font), sg.InputText(), sg.Text('                         Insira o Prazo:', font = font), sg.InputText()],
-    [sg.Text('Insira a descrição mais detalhada do sistema:', font = font), sg.InputText()],
-    [sg.Button('Confirmar')]
+FormularioLayout1 = [
+    [sg.Text('Informações do Cliente:', font=font3)],
+    [sg.Text('Indique o Nome do Cliente:'), sg.InputText(), sg.Text('                   Indique o Nome da Empresa Cliente:'), sg.InputText()],
+    [sg.Text('Indique o CNPJ do Cliente:'), sg.InputText(), sg.Text('                   Indique o Endereço do Cliente:'), sg.InputText()],
+    [sg.Text('Indique o CEP do Cliente:'), sg.InputText(), sg.Text('                     Indique a Cidade e o Estado do Cliente:'), sg.InputText()],
+    [sg.Text('Indique o Nome do Presidente Cliente:'), sg.InputText(), sg.Text('   Indique o CPF do Presidente Cliente:'), sg.InputText()],
+    [sg.Text('Indique o RG do Presidente Cliente:'), sg.InputText(), sg.Text('       Indique o EMAIL do Cliente:'), sg.InputText()]
     ]
 
 #A função que executa a janela de Formulário
 def Formulario():
     #Declara as variáveis de forma global para serem usadas em outras funções e locais
-    global FormularioWindow, event, values
+    global FormularioWindow, event4, values4
     #A função Window cria a janela com o layout especificado
-    FormularioWindow = sg.Window("Autotech AutoContract", layout)
+    FormularioWindow = sg.Window("Autotech AutoContract", FormularioLayout1)
     #event armazena as informações passadas pelos botões em strings
     #values armazena as informações passadas pelas caixas de texto em strings de um dicionário
     #A função read lê os dados da janela(Botões e caixas de texto)
-    event, values = FormularioWindow.read()
-    print(event, values)
+    event4, values4 = FormularioWindow.read()
+    print(event4, values4)
 
 #A função que executa a janela do Menu de Contratos
 def MenuPreencherContratos():
