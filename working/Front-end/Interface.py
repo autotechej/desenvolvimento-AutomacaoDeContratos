@@ -1,9 +1,8 @@
 #Esta é a biblioteca usada para fazer a interface
 
-from tkinter import CENTER, LEFT, RIGHT
+
 from turtle import left
 import PySimpleGUI as sg
-
 #Aqui são definidos os parâmetros do tema da interface, nesse caso foram utilizadas as cores da EJ
 
 sg.LOOK_AND_FEEL_TABLE['MyCreatedTheme'] = {'BACKGROUND': 'Black', 
@@ -49,18 +48,47 @@ PreferenciasLayout = [
 
 #Layout do Formulário
 FormularioLayout1 = [
-    [sg.Text('Informações do Cliente:', font=font3)],
+    [sg.Text('Informações do Cliente', font=font3)],
     [sg.Text('Indique o Nome do Cliente:'), sg.InputText(), sg.Text('                   Indique o Nome da Empresa Cliente:'), sg.InputText()],
     [sg.Text('Indique o CNPJ do Cliente:'), sg.InputText(), sg.Text('                   Indique o Endereço do Cliente:'), sg.InputText()],
     [sg.Text('Indique o CEP do Cliente:'), sg.InputText(), sg.Text('                     Indique a Cidade e o Estado do Cliente:'), sg.InputText()],
     [sg.Text('Indique o Nome do Presidente Cliente:'), sg.InputText(), sg.Text('   Indique o CPF do Presidente Cliente:'), sg.InputText()],
-    [sg.Text('Indique o RG do Presidente Cliente:'), sg.InputText(), sg.Text('       Indique o EMAIL do Cliente:'), sg.InputText()]
+    [sg.Text('Indique o RG do Presidente Cliente:'), sg.InputText(), sg.Text('       Indique o EMAIL do Cliente:'), sg.InputText()],
+    [sg.Button('Continuar'), sg.Button('Sair')]
     ]
+
+FormularioLayout2 =[
+    [sg.Text('Informações da EJ', font=font3)],
+    [sg.Text('Indique o Nome da EJ:'), sg.InputText(), sg.Text('                Indique o CNPJ da EJ: '), sg.InputText()],
+    [sg.Text('Indique o CEP da EJ:'), sg.InputText(), sg.Text('                  Indique o Presidente da EJ: '), sg.InputText()],
+    [sg.Text('Indique o CPF do Presidente:'), sg.InputText(), sg.Text('       Indique o RG do Presidente: '), sg.InputText()],
+    [sg.Text('Indique o Endereço do Presidente:'), sg.InputText(), sg.Text('Indique o EMAIL da EJ: '), sg.InputText()],
+    [sg.Button('Continuar'), sg.Button('Sair')]
+]
+
+
+def Formulario2():
+    global FormularioWindow2, event5, values5, NomeEJ, CNPJEJ, CEPEJ, PresidenteEJ, CPFPresidenteEJ, RGPresidenteEJ, EnderecoPresidenteEJ, EMAILEJ
+    FormularioWindow2 = sg.Window("Autotech AutoContract", FormularioLayout2)
+    event5, values5 = FormularioWindow2.read()
+    NomeEJ = values5[0]
+    CNPJEJ = values5[1]
+    CEPEJ = values5[2]
+    PresidenteEJ = values5[3]
+    CPFPresidenteEJ = values5[4]
+    RGPresidenteEJ = values5[5]
+    EnderecoPresidenteEJ = values5[6]
+    EMAILEJ = values5[7]
+    if event5 == 'Continuar':
+        FormularioWindow2.close()
+        Formulario3()
+    elif event5 == 'Sair':
+        FormularioWindow2.close()
 
 #A função que executa a janela de Formulário
 def Formulario():
     #Declara as variáveis de forma global para serem usadas em outras funções e locais
-    global FormularioWindow, event4, values4
+    global FormularioWindow, event4, values4, NomeCliente, NomeEmpresa, CNPJCliente, EnderecoCliente, CEPcliente, CidadeEstadoCliente, PresidenteCliente, CPFPresidenteCliente, RGPresidenteCliente, EMAILCliente
     #A função Window cria a janela com o layout especificado
     FormularioWindow = sg.Window("Autotech AutoContract", FormularioLayout1)
     #event armazena as informações passadas pelos botões em strings
@@ -68,6 +96,22 @@ def Formulario():
     #A função read lê os dados da janela(Botões e caixas de texto)
     event4, values4 = FormularioWindow.read()
     print(event4, values4)
+    NomeCliente=values4[0]
+    NomeEmpresa=values4[1]
+    CNPJCliente=values4[2]
+    EnderecoCliente=values4[3]
+    CEPcliente=values4[4]
+    CidadeEstadoCliente=values4[5]
+    PresidenteCliente=values4[6]
+    CPFPresidenteCliente=values4[7]
+    RGPresidenteCliente=values4[8]
+    EMAILCliente=values4[9]
+    if event4 == 'Continuar':
+        FormularioWindow.close()
+        Formulario2()
+        
+    elif event4 =='Sair':
+        FormularioWindow.close()
 
 #A função que executa a janela do Menu de Contratos
 def MenuPreencherContratos():
@@ -78,7 +122,9 @@ def MenuPreencherContratos():
     #Caso clique em continuar o programa verifica qual o contrato desejado
     if event2 == 'Continuar':
         if TipoContrato == 'Venda' or TipoContrato == 'Prestação de Serviços':
+            ContratosWindow.close()
             Formulario()
+
     #Caso clique sair o programa encerra
     elif event2 == 'Sair':
         ContratosWindow.close()
@@ -96,12 +142,12 @@ def MenuPrincipal():
     event1, values1 = MenuWindow.read()
     #Caso clique Preencher Novo Contrato ele abre o menu de contratos
     if event1 == 'Preencher Novo Contrato':
-        MenuPreencherContratos()
         MenuWindow.close()
+        MenuPreencherContratos()
     #Caso clique Preferências ele abre o Menu de Preferências
     elif event1 == 'Preferências':
-        MenuPreferencias()
         MenuWindow.close()
+        MenuPreferencias()
     #Caso clique Sair ele encerra o programa
     elif event1 == 'Sair':
         MenuWindow.close()
