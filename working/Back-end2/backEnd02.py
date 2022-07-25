@@ -2,20 +2,20 @@ import os
 import sys
 
 from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
-arquivo = str(input("Digite o nome do arquivo:\n"))
-nomeF = str(input("Digite o nome final do arquivo em pdf\n"))
+arquivo = str(input("Digite o nome do arquivo:\n"))        #nome do arquivo .html de entrada sem o final
+nomeF = str(input("Digite o nome final do arquivo em pdf\n"))   #nome doarquivo .pdf de saida sem o final
 
 
-def html_to_pdf(html, pdf):
+def html_to_pdf(html, pdf):      #função principal
     app = QtWidgets.QApplication(sys.argv)
 
     page = QtWebEngineWidgets.QWebEnginePage()
 
-    def handle_print_finished(filename, status):
+    def handle_print_finished(filename, status): #aqui é pra dizer no print se deu certo ou não
         print("Terminado!", filename, status)
         QtWidgets.QApplication.quit()
 
-    def handle_load_finished(status):
+    def handle_load_finished(status):   
         if status:
             page.printToPdf(pdf)
         else:
@@ -33,5 +33,5 @@ if __name__ == "__main__":
     filename = os.path.join(CURRENT_DIR, f"{arquivo}.html")
     print(filename)
 
-    html_to_pdf(filename, f"{nomeF}.pdf")
+    html_to_pdf(filename, f"{nomeF}.pdf")   #chamando a função para teste, pode usar "nome_do_arquivo para usar um arquivo fixo"
     
