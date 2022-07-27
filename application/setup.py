@@ -2,7 +2,7 @@ import sys
 
 from cx_Freeze import Executable, setup
 
-build_exe_options = {"packages": ["os"], "includes": ["tkinter"]}
+build_exe_options = {"packages": ["os"], "includes": ["tkinter", "PyQt5"]}
 
 base = None
 if sys.platform == "win32":

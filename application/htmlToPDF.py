@@ -1,7 +1,7 @@
 import os
 import sys
 
-from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
+from PyQt5 import QtWidgets, QtWebEngineWidgets, QtCore
 arquivo = ".\Contrato"      #nome do arquivo .html de entrada sem o final
 nomeF = ".\ContratoFinal"   #nome doarquivo .pdf de saida sem o final
 
