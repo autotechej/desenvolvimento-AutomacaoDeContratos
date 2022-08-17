@@ -36,8 +36,9 @@ MenuPrincipalLayout = [
 
 #Layout do Menu de Contratos
 MenuContratosLayout = [
-    [sg.Text('Você possui dois tipos de contrato: Venda e Prestação de Serviços (como estamos na versão de teste, ambos os tipos resutarão no mesmo)')],
-    [sg.Text('Indique qual tipo de contrato você quer usar:'), sg.InputText()],
+    [sg.Text('Você possui dois tipos de contrato: Venda e Prestação de Serviços')],
+    [sg.Button('Contrato de Power BI')],
+    [sg.Button('Contrato de Automação de Contratos')],
     [sg.Button('Continuar'), sg.Button('Sair')]
 ]
 
