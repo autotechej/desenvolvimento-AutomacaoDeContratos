@@ -4,9 +4,24 @@
 import PySimpleGUI as sg
 import Layouts as lyt
 
+
+def Formulario5():
+    global FormularioWindow5, event8, values8, Prazo1, Prazo2, Prazo3, Prazo4, Prazo5
+    FormularioWindow5 = sg.Window('Autotech AutoContract', lyt.FormularioLayout5)
+    event8, values8 = FormularioWindow5.read()
+    Prazo1 = values8[0]
+    Prazo2 = values8[1]
+    Prazo3 = values8[2]
+    Prazo4 = values8[3]
+    Prazo5 = values8[4]
+    if event7 == 'Finalizar':
+        FormularioWindow4.close()
+    elif event7 == 'Sair' or event7 == sg.WIN_CLOSED:
+        FormularioWindow4.close()
+
 #Essa função é declarada primeiro, pois ela será solicitada por outra função pra gerar um fluxo no programa, no entanto ela seria a última a ser executada
 def Formulario4():
-    global FormularioWindow4, event7, values7, NumeroControle, Data, NomeRepresentante, CPFRepresentante, Testemunha1, CPFTestemunha1, Testemunha2, CPFTestemunha2
+    global FormularioWindow4, event7, values7, NumeroControle, Data, NomeRepresentante, CPFRepresentante, Testemunha1, CPFTestemunha1, Testemunha2, CPFTestemunha2, DescricaoSistema
     FormularioWindow4 = sg.Window('Autotech AutoContract', lyt.FormularioLayout4)
     event7, values7 = FormularioWindow4.read()
     NumeroControle = values7[0]
@@ -17,10 +32,11 @@ def Formulario4():
     CPFTestemunha1 = values7[5]
     Testemunha2 = values7[6]
     CPFTestemunha2 = values7[7]
+    DescricaoSistema = values7[8]
     #Essa função condicional faz o fluxo dos botões no programa
-    if event7 == 'Finalizar':
-        FormularioWindow4.close()
-    elif event7 == 'Sair':
+    if event7 == 'Continuar':
+        Formulario5()
+    elif event7 == 'Sair' or event7 == sg.WIN_CLOSED:
         FormularioWindow4.close()
 
 #Essa função capta e armazena os dados de pagamento
@@ -38,7 +54,7 @@ def Formulario3():
     if event6 == 'Continuar':
         FormularioWindow3.close()
         Formulario4()
-    elif event6 == 'Sair':
+    elif event6 == 'Sair' or event6 == sg.WIN_CLOSED:
         FormularioWindow3.close()
 
 
@@ -58,7 +74,7 @@ def Formulario2():
     if event5 == 'Continuar':
         FormularioWindow2.close()
         Formulario3()
-    elif event5 == 'Sair':
+    elif event5 == 'Sair' or event5 == sg.WIN_CLOSED:
         FormularioWindow2.close()
 
 #Essa função capta e armazena os dados do cliente
@@ -85,23 +101,25 @@ def Formulario():
         FormularioWindow.close()
         Formulario2()
         
-    elif event4 =='Sair':
+    elif event4 =='Sair' or event4 == sg.WIN_CLOSED:
         FormularioWindow.close()
 
 #A função que executa a janela do Menu de Contratos
 def MenuPreencherContratos():
     global ContratosWindow, event2, values2, TipoContrato
-    ContratosWindow = sg.Window("Autotech AutoContract", lyt.MenuContratosLayout)
+    ContratosWindow = sg.Window("Autotech AutoContract", lyt.MenuContratosLayout, size=(350,200), element_justification='c')
     event2, values2 = ContratosWindow.read()
-    TipoContrato = values2[0]
     #Caso clique em continuar o programa verifica qual o contrato desejado
-    if event2 == 'Continuar':
-        if TipoContrato == 'Venda' or TipoContrato == 'Prestação de Serviços':
-            ContratosWindow.close()
-            Formulario()
+    if event2 == 'Contrato de Power BI':
+        ContratosWindow.close()
+        Formulario()
+
+    elif event2 == 'Contrato de Automação de Contratos':
+        ContratosWindow.close()
+        Formulario()
 
     #Caso clique sair o programa encerra
-    elif event2 == 'Sair':
+    elif event2 == 'Sair' or event2 == sg.WIN_CLOSED:
         ContratosWindow.close()
 
 #A função que executa a janela de preferências do usuário
@@ -124,5 +142,5 @@ def MenuPrincipal():
         MenuWindow.close()
         MenuPreferencias()
     #Caso clique Sair ele encerra o programa
-    elif event1 == 'Sair':
+    elif event1 == 'Sair' or event1 == sg.WIN_CLOSED:
         MenuWindow.close()

@@ -36,10 +36,11 @@ MenuPrincipalLayout = [
 
 #Layout do Menu de Contratos
 MenuContratosLayout = [
-    [sg.Text('Você possui dois tipos de contrato: Venda e Prestação de Serviços')],
+    [sg.Text('Menu de Seleção', font = font3)],
+    [sg.Text('')],
     [sg.Button('Contrato de Power BI')],
     [sg.Button('Contrato de Automação de Contratos')],
-    [sg.Button('Continuar'), sg.Button('Sair')]
+    [sg.Button('Sair')]
 ]
 
 #Layout do Menu de Preferências
@@ -84,6 +85,7 @@ FormularioLayout3 =[
 
 FormularioLayout4 = [
     [sg.Text('Dados Finais', font=font3)],
+    [sg.Text('Faça uma descrição do sistema: '), sg.InputText()],
     [sg.Text('Indique o Número de Controle: '), sg.InputText()], 
     [sg.Text('Data no formato xx/xx/xxxx:'), sg.InputText('xx/xx/xxxx')],
     [sg.Text('Indique o Nome do Representante da Empresa Cliente:'), sg.InputText()], 
@@ -92,5 +94,16 @@ FormularioLayout4 = [
     [sg.Text('Indique o CPF da Testemunha 1:'), sg.InputText()],
     [sg.Text('Indique o Nome da Testemunha 2'), sg.InputText()], 
     [sg.Text('Indique o CPF da Testemunha 2:'), sg.InputText()],
-    [sg.Button('Finalizar'), sg.Button('Sair')]
+    [sg.Text('Faça uma descrição do sistema: '), sg.InputText()],
+    [sg.Button('Continuar'), sg.Button('Sair')]
 ]
+
+FormularioLayout5 = [
+    [sg.Text('Dos Prazos', font=font3)],
+    [sg.Text('Prazo para Elaboração inicial e planejamento do projeto: '), sg.InputText()],
+    [sg.Text('Prazo para a compra e obtenção dos materiais necessários para o projeto: '), sg.InputText()],
+    [sg.Text('Prazo para desenvolvimento prático do projeto: '), sg.InputText()],
+    [sg.Text('Prazo para compra e obtenção dos materiais necessários para o projeto: '), sg.InputText()],
+    [sg.Text('Prazo para instalação do projeto no local solicitado pelo contratante: '), sg.InputText()],
+    [sg.Button('Finalizar'), sg.Button('Sair')]
+    ]
