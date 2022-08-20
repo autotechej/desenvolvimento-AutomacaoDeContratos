@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*-
 #encoding: utf-8
 import Functions as fct
-from .Functions import Prazo4
 beta = 'Isso e um beta'
 h1 = '{size: 54px; text-align: center;\n\tfont-family: Georgia, \'Times New Roman\', Times, serif;}'
 h2 = '{size: 40px; text-align: center;\n\tfont-family: Georgia, \'Times New Roman\', Times, serif;}'
