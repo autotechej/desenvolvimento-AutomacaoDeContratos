@@ -106,4 +106,4 @@ FormularioLayout5 = [
     [sg.Text('Prazo para compra e obtenção dos materiais necessários para o projeto: '), sg.InputText()],
     [sg.Text('Prazo para instalação do projeto no local solicitado pelo contratante: '), sg.InputText()],
     [sg.Button('Finalizar'), sg.Button('Sair')]
-    ]Concre
+    ]
